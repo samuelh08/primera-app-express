@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  if (req.query.nombre === undefined) {
+app.get('/makers/:name', (req, res) => {
+  if (req.params.name === undefined) {
     res.send('<h1>Hola desconocido!</h1>');
   } else {
-    res.send('<h1>Hola ' + req.query.nombre + '!</h1>');
+    res.send(
+      '<h1>Hola ' +
+        req.params.name.charAt(0).toUpperCase() +
+        req.params.name.slice(1) +
+        '!</h1>',
+    );
   }
 });
 
